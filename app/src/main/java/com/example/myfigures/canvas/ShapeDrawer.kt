@@ -4,19 +4,16 @@ import android.graphics.Canvas
 import android.graphics.Paint
 
 class ShapeDrawer {
-    private val shapes = listOf(Triangle(), Square())
-    private var currentShapeIndex = 0
-    private val drawnShapes = mutableListOf<Pair<Shape, Float>>() // Lista de pares (forma, posición X)
-    private var currentX = 50f // Posición X inicial
-    private val spacing = 10f // Espaciado entre formas
+    private val drawnShapes = mutableListOf<Pair<RegularPolygon, Float>>() // Lista de pares (figura, posición X)
+    private var currentX = 30f // Posición X inicial
+    private val initialSpacing = 40f // Espaciado inicial entre la primera figura y el borde
 
-    fun addNextShape(y: Float, size: Float) {
-        if (currentShapeIndex < shapes.size) {
-            val shape = shapes[currentShapeIndex]
-            drawnShapes.add(Pair(shape, currentX)) // Añadir la forma y su posición a la lista
-            currentX += size + spacing // Actualiza la posición X para la siguiente forma
-            currentShapeIndex++
-        }
+    fun addNextShape(y: Float) {
+        val sides = drawnShapes.size + 3 // Número de lados comenzando desde el triángulo
+        val size = 90f
+        val shape = RegularPolygon(sides)
+        drawnShapes.add(Pair(shape, currentX)) // Añade la figura y su posición a la lista
+        currentX += calculateSpacing(size) // Actualiza la posición X para la siguiente figura
     }
 
     fun drawAllShapes(canvas: Canvas, paint: Paint, y: Float, size: Float) {
@@ -27,8 +24,17 @@ class ShapeDrawer {
 
     fun reset() {
         drawnShapes.clear()
-        currentShapeIndex = 0
-        currentX = 50f
+        currentX = initialSpacing // Reinicia la posición inicial X al espaciado inicial
+    }
+
+    private fun calculateSpacing(size: Float): Float {
+        return size + initialSpacing // Espacia igual al tamaño de la figura más el espaciado inicial
     }
 }
+
+
+
+
+
+
 
