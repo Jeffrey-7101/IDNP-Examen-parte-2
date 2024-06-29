@@ -15,7 +15,7 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
     private var currentY = 200f
 
     init {
-        paint.color = Color.BLACK
+        paint.color = Color.parseColor("#F1C40F")
         paint.style = Paint.Style.FILL
     }
 
