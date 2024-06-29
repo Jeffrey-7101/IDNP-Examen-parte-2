@@ -1,20 +1,29 @@
 package com.example.myfigures
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var drawView: DrawView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val btnAdd: Button = findViewById(R.id.btnAddSide)
+        val btnReset: Button = findViewById(R.id.btnReset)
+
+        drawView = findViewById(R.id.drawView) // Inicializar drawView con la instancia de DrawView
+
+        // Manejar el botón para agregar un lado más
+        btnAdd.setOnClickListener {
+            drawView.addShape()
+        }
+
+        // Manejar el botón para resetear
+        btnReset.setOnClickListener {
+            drawView.reset()
         }
     }
 }
