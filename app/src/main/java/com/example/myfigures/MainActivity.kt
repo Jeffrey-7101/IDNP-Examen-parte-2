@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
         val btnAdd: Button = findViewById(R.id.btnAddSide)
         val btnReset: Button = findViewById(R.id.btnReset)
 
-        drawView = findViewById(R.id.drawView) // Inicializar drawView con la instancia de DrawView
+        drawView = findViewById(R.id.drawView)
 
-        // Manejar el botón para agregar un lado más
+        // Botón para agregar un lado más
         btnAdd.setOnClickListener {
             drawView.addShape()
         }
 
-        // Manejar el botón para resetear
+        // Botón para resetear
         btnReset.setOnClickListener {
             drawView.reset()
         }

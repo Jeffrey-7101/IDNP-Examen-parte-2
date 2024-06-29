@@ -4,8 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 
 class ShapeDrawer {
-    private val drawnShapes = mutableListOf<Pair<RegularPolygon, Float>>() // Lista de pares (figura, posición X)
-    private var currentX = 30f // Posición X inicial
+    private val drawnShapes = mutableListOf<Pair<RegularPolygon, Float>>() // Lista de pares (figura, posicion X)
+    private var currentX = 30f // Posicion x inicial
     private val initialSpacing = 40f // Espaciado inicial entre la primera figura y el borde
 
     fun addNextShape(y: Float) {
@@ -24,7 +24,7 @@ class ShapeDrawer {
 
     fun reset() {
         drawnShapes.clear()
-        currentX = initialSpacing // Reinicia la posición inicial X al espaciado inicial
+        currentX = initialSpacing // Reinicia la posicion inicial X al espaciado inicial
     }
 
     private fun calculateSpacing(size: Float): Float {

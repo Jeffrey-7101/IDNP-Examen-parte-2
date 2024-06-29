@@ -12,8 +12,9 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
 
     private val paint = Paint()
     private val shapeDrawer = ShapeDrawer()
-    private var currentY = 200f
+    private var currentY = 200f // Posicion vertical
 
+    // Constructor
     init {
         paint.color = Color.parseColor("#F1C40F")
         paint.style = Paint.Style.FILL
@@ -26,12 +27,12 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
 
     fun addShape() {
         shapeDrawer.addNextShape(currentY)
-        invalidate() // Redibujar las formas
+        invalidate() // Redibuja las formas
     }
 
     fun reset() {
         shapeDrawer.reset()
-        invalidate() // Redibujar para limpiar las formas
+        invalidate() // Redibuja para limpiar las formas
     }
 }
 
